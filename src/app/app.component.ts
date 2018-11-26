@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+
+import {QuestionService} from './question.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    templateUrl: './app.component.html',
+    selector: 'app-root',
+    providers: [QuestionService]
 })
 export class AppComponent {
-  title = 'dynamic-form';
+    questions: any[];
+
+    constructor(service: QuestionService) {
+        this.questions = service.getQuestions();
+    }
 }
